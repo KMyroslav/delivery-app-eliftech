@@ -4,6 +4,7 @@
   "description": "Web application where users can order food delivery",
   "main": "index.js",
   "scripts": {
+    "build": "cd client && npm install && npm run build",
     "start": "cross-env NODE_ENV=production node ./server/bin/server.js",
     "start:dev": "cross-env NODE_ENV=development nodemon ./server/bin/server.js"
   },
