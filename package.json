@@ -1,0 +1,32 @@
+{
+  "name": "delivery-app-eliftech",
+  "version": "1.0.0",
+  "description": "Web application where users can order food delivery",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node ./server/bin/server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon ./server/bin/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KMyroslav/delivery-app-eliftech.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KMyroslav/delivery-app-eliftech/issues"
+  },
+  "homepage": "https://github.com/KMyroslav/delivery-app-eliftech#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1"
+  }
+}
