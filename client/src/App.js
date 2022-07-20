@@ -1,9 +1,26 @@
-import React from 'react';
-import { Counter } from './features/counter/Counter';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+
+
+
+import ShopsPage from "./pages/ShopsPage";
+import Nav from "./components/Nav";
+import CartPage from "./pages/CartPage";
 
 function App() {
-  return ( 
-    <Counter></Counter>
+
+
+  return (
+    <div>
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<ShopsPage />} />
+          <Route path="/Cart" element={<CartPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
