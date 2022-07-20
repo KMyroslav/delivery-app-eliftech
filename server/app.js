@@ -17,6 +17,15 @@ const {shopsRouter} = require('./routes')
 
 app.use("/api/shops", shopsRouter);
 
+app.use('/api', (req, res) => {
+  res.status(404).json({ message: 'Not found' })
+});
+
+app.use('/api', (err, req, res, next) => {
+  const {status = 500, message = "Server error"} = err;
+  res.status(status).json({ message })
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
