@@ -1,10 +1,15 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { store } from './redux/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import axios from 'axios';
+
+const BASE_URL = 'https://delivery-app-eliftech-mk.herokuapp.com'
+
+axios.defaults.baseURL = BASE_URL;
 
 const container = document.getElementById('root');
 const root = createRoot(container);
