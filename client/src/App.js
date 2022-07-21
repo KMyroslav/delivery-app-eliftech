@@ -18,15 +18,15 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div>
-      <BrowserRouter>
-        <Nav />
+    <BrowserRouter>
+      <Nav />
+      <div className="container">
         <Routes>
           <Route path="/" element={<ShopsPage />} />
           <Route path="/Cart" element={<CartPage />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
