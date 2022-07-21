@@ -7,17 +7,14 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function ShopsPage() {
-  const { data, isLoading, error } = useSelector(getShops);
-  const [shop, setShop] = useState()
+  const { currentShop, isLoading, error } = useSelector(getShops);
 
-  return (
-      isLoading ? (
-        <p>LOADER...</p>
-      ) : (
-        <>
-          <ShopsContainer shops={data} setShop={setShop} />
-          <ProductContainer shop={shop || data[0]} />
-        </>
-      )
+  return isLoading ? (
+    <p>LOADER...</p>
+  ) : (
+    <>
+      <ShopsContainer />
+      <ProductContainer shop={currentShop} />
+    </>
   );
 }
