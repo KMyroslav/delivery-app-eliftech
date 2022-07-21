@@ -10,11 +10,19 @@ export default function CartListItem({ item }) {
   return (
     <li className={styles.listItem}>
       <img src={item.img} alt={`${item.name}`} className={styles.img} />
+      <button
+        className={styles.button}
+        onClick={() => dispatch(cartSlice.actions.removeItem({ item }))}
+      >
+        Remove
+      </button>
       <div className={styles.infoWrapper}>
-        <p className={styles.name}>{item.name}</p>
-        <p className={styles.price}>
-          Price: {Number(item.price * quantity).toFixed(2)}$
-        </p>
+        <div className={styles.descWrapper}>
+          <p className={styles.name}>{item.name}</p>
+          <p className={styles.price}>
+            Price: {Number(item.price * quantity).toFixed(2)}$
+          </p>
+        </div>
         <input
           className={styles.input}
           type="number"
@@ -33,12 +41,6 @@ export default function CartListItem({ item }) {
             );
           }}
         />
-        <button
-          className={styles.button}
-          onClick={() => dispatch(cartSlice.actions.removeItem({ item }))}
-        >
-          Remove
-        </button>
       </div>
     </li>
   );
