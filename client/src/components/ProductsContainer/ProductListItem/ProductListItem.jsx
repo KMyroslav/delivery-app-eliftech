@@ -7,11 +7,11 @@ export default function ProductListItem({ product }) {
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
-    dispatch(cartSlice.actions.addItem({ ...product, quantity }));
+    dispatch(cartSlice.actions.manageItem({ ...product, quantity }));
   };
   return (
     <li>
-      <img src={product.img} alt="" />
+      <img src={product.img} alt={`${product.name}`} />
       <p>{product.name}</p>
       <input
         type="number"
