@@ -111,7 +111,7 @@ export default function CartForm() {
           </label>
           <div className={styles.checkOutWrapper}>
             <p className={styles.totalPrice}>
-              Total price: {Number(totalPrice).toFixed(2) || "0.00"}$
+              Total price {Number(totalPrice).toFixed(2) || "0.00"}$
             </p>
 
             <button className={styles.orderButton} type="submit">
