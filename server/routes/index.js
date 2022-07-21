@@ -1,3 +1,3 @@
-const shopsRouter = require('./shopsRouter')
-
-module.exports = {shopsRouter}
+const shopsRouter = require("./shopsRouter");
+const ordersRouter = require("./ordersRouter");
+module.exports = { shopsRouter, ordersRouter };
