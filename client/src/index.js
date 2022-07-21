@@ -8,10 +8,11 @@ import axios from "axios";
 import { persistor } from "./redux/store";
 import { store } from "./redux/store";
 import App from "./App";
-import "./index.css";
+import "./index.scss";
 
-// const BASE_URL = 'https://delivery-app-eliftech-mk.herokuapp.com'
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = window.location.origin.includes("local")
+  ? "http://localhost:8080"
+  : "https://delivery-app-eliftech-mk.herokuapp.com";
 
 axios.defaults.baseURL = BASE_URL;
 
