@@ -3,11 +3,16 @@ import { fetchShops } from "./shopsOperations";
 import { createSlice } from "@reduxjs/toolkit";
 
 const shopsSlice = createSlice({
-    name: 'shops',
-    initialState: {data: [], isLoading: true, error: null},
-    extraReducers: (builder) => {
-      builder.addCase(fetchShops.fulfilled, (state, { payload }) => ({
+  name: "shops",
+  initialState: { data: [], currentShop: null, isLoading: true, error: null },
+  reducers: {
+    setShop: (state, { payload }) => ({ ...state, currentShop: payload }),
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchShops.fulfilled, (state, { payload }) => ({
         ...state,
+        currentShop: payload[0],
         data: payload,
         isLoading: false,
       }))
@@ -17,10 +22,10 @@ const shopsSlice = createSlice({
       }))
       .addCase(fetchShops.rejected, (state, { payload }) => ({
         ...state,
-      isLoading: false,
-      error: payload,
-      }))
-    },
-})
+        isLoading: false,
+        error: payload,
+      }));
+  },
+});
 
-export default shopsSlice.reducer
+export default shopsSlice;
