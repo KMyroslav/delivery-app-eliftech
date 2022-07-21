@@ -1,0 +1,29 @@
+@import 'styles/shared';
+
+.header{
+    padding: 20px;
+    background-color: $primary-white-bg;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $header-bottom-border;
+    margin-bottom: 10px;
+}
+
+.company{
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-right: 45px;
+    color:black !important;
+}
+
+.navLink{
+transition: color $primary-transition-style;
+
+&:hover{
+    color:$accent;
+}
+    
+&:not(:last-child){
+        margin-right: 20px;
+    }
+}

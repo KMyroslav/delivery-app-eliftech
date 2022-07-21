@@ -1,0 +1,60 @@
+%list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  %wrapper{
+    overflow-y: auto;
+    height: 80vh;
+    border-radius: 10px;
+
+    // outline: 1px solid tomato;
+  }
+  
+  %input{
+    background-color: transparent;
+    border: 1px solid $accent-dark-blue;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    font-weight: 600;
+  
+    transition: border $primary-transition-style;
+  
+    color: $secondary-black-text;
+  
+    &::placeholder {
+      font-size: 16px;
+      line-height: 1.25;
+      color: $primary-grey-text;
+    }
+  
+    &:hover, &:focus {
+      outline: none;
+      border: 1px solid $accent;
+    }
+  }
+
+  %button{
+    border: solid 1px transparent;
+    border-radius: 4px;
+    padding: 6px 22px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.62;
+  color: $secondary-black-text;
+  background-color: $secondary-grey-bg;
+
+  transition: background-color $primary-transition-style,
+    color $primary-transition-style, box-shadow $primary-transition-style;
+
+  &:hover,
+  &:focus {
+    color: $secondary-white-text;
+    background-color: $button-accent-blue-bg;
+    cursor: pointer;
+    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+      0px 2px 2px rgba(0, 0, 0, 0.12);
+  }
+  }
