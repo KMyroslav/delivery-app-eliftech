@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const checkData = (user) => {};
-
 const userSlice = createSlice({
   name: "user",
-  initialState: { data: {}, isValid: null },
+  initialState: {},
   reducers: {
     addUserData: (state, { payload }) => ({ ...state, ...payload }),
   },
