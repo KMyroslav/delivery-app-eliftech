@@ -1,3 +1,3 @@
-getOrderStatus = (state) => state.order;
+const getOrderStatus = (state) => state.order;
 
 export default getOrderStatus;
