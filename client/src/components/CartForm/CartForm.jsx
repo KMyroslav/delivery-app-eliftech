@@ -1,10 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import userSlice from "../../redux/user/userSlice";
+import { Bars } from "react-loader-spinner";
 import * as yup from "yup";
 
 import { placeOrder } from "redux/order/orderOperations";
 import getCart from "redux/cart/cartSelectors";
+import getOrderStatus from "redux/order/orderSelectors";
+import getShops from "redux/shops/shopsSelectors";
 
 import VerificationError from "./VerificationError";
 
@@ -13,7 +16,9 @@ import styles from "./cartForm.module.scss";
 export default function CartForm() {
   const dispatch = useDispatch();
 
+  const { isLoading } = useSelector(getOrderStatus);
   const { items, totalPrice } = useSelector(getCart);
+  const { currentShop } = useSelector(getShops);
 
   const validationsSchema = yup.object().shape({
     name: yup
@@ -46,7 +51,7 @@ export default function CartForm() {
         onSubmit={(values) => {
           dispatch(
             placeOrder({
-              shop: "McDonalds",
+              shop: currentShop._id,
               user: values,
               items,
               totalPrice,
@@ -115,7 +120,16 @@ export default function CartForm() {
             </p>
 
             <button className={styles.orderButton} type="submit">
-              Submit
+              {isLoading ? (
+                <Bars
+                  height="30"
+                  width="30"
+                  color="#2196f3"
+                  ariaLabel="loading-indicator"
+                />
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
         </Form>

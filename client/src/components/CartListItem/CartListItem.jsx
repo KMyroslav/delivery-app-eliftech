@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import cartSlice from "../../redux/cart/cartSlice";
 import styles from "./cartListItem.module.scss";
+import { toast } from "react-toastify";
 
 export default function CartListItem({ item }) {
   const dispatch = useDispatch();
@@ -12,7 +13,10 @@ export default function CartListItem({ item }) {
       <img src={item.img} alt={`${item.name}`} className={styles.img} />
       <button
         className={styles.button}
-        onClick={() => dispatch(cartSlice.actions.removeItem({ item }))}
+        onClick={() => {
+          toast.error(`${item.name} removed from cart`);
+          dispatch(cartSlice.actions.removeItem({ item }));
+        }}
       >
         Remove
       </button>

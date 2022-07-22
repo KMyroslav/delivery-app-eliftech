@@ -3,9 +3,10 @@ import getShops from "../../redux/shops/shopsSelectors";
 import getCart from "../../redux/cart/cartSelectors";
 import shopsSlice from "../../redux/shops/shopsSlice";
 import styles from "./shopsContainer.module.scss";
+import { toast } from "react-toastify";
 
 export default function ShopsContainer() {
-  const { data } = useSelector(getShops);
+  const { data, currentShop } = useSelector(getShops);
   const { items } = useSelector(getCart);
   const dispatch = useDispatch();
 
@@ -15,14 +16,22 @@ export default function ShopsContainer() {
         {data.map((shop) => (
           <li
             key={shop._id}
-            className={styles.listItem}
+            className={
+              currentShop._id === shop._id
+                ? `${styles.listItem} activeShop`
+                : styles.listItem
+            }
             style={{ backgroundImage: `url(${shop.thumbImg})` }}
             onClick={() => {
               !items.length
                 ? dispatch(shopsSlice.actions.setShop(shop))
-                : console.log("nope");
+                : toast.warn(
+                    "Cant order from different shop. Delete cart items first"
+                  );
             }}
-          ></li>
+          >
+            {/* <p className={styles.name}>{shop.name}</p> */}
+          </li>
         ))}
       </ul>
     </div>

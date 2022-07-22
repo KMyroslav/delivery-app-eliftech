@@ -1,6 +1,7 @@
 import ProductContainer from "../components/ProductsContainer/ProductsContainer";
 import ShopsContainer from "../components/ShopsContainer";
 import styles from "./shopsPage.module.scss";
+import { Bars } from "react-loader-spinner";
 
 import getShops from "../redux/shops/shopsSelectors";
 
@@ -10,7 +11,14 @@ export default function ShopsPage() {
   const { currentShop, isLoading, error } = useSelector(getShops);
 
   return isLoading ? (
-    <p>LOADER...</p>
+    <div className="loader">
+      <Bars
+        height="150"
+        width="150"
+        color="#2196f3"
+        ariaLabel="loading-indicator"
+      />
+    </div>
   ) : (
     <div className={styles.shopPageWrapper}>
       <ShopsContainer />

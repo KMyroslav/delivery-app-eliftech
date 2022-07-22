@@ -9,6 +9,7 @@ import { persistor } from "./redux/store";
 import { store } from "./redux/store";
 import App from "./App";
 import "./index.scss";
+import { Bars } from "react-loader-spinner";
 
 const BASE_URL = window.location.origin.includes("local")
   ? "http://localhost:8080"
@@ -22,7 +23,19 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading="null" persistor={persistor}>
+      <PersistGate
+        loading={
+          <div className="loader">
+            <Bars
+              height="150"
+              width="150"
+              color="#2196f3"
+              ariaLabel="loading-indicator"
+            />
+          </div>
+        }
+        persistor={persistor}
+      >
         <App />
       </PersistGate>
     </Provider>
