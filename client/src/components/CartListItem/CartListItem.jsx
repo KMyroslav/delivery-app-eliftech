@@ -10,7 +10,13 @@ export default function CartListItem({ item }) {
 
   return (
     <li className={styles.listItem}>
-      <img src={item.img} alt={`${item.name}`} className={styles.img} />
+      <img
+        src={item.img}
+        alt={`${item.name}`}
+        className={styles.img}
+        width="337"
+        height="280"
+      />
       <button
         className={styles.button}
         onClick={() => {

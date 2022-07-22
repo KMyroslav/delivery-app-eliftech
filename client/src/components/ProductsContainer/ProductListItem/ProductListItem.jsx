@@ -11,7 +11,13 @@ export default function ProductListItem({ product }) {
 
   return (
     <li className={styles.wrapper}>
-      <img className={styles.img} src={product.img} alt={`${product.name}`} />
+      <img
+        className={styles.img}
+        src={product.img}
+        alt={`${product.name}`}
+        width="281"
+        height="192"
+      />
       <div className={styles.infoWrapper}>
         <p className={styles.name}>{product.name}</p>
         <div className={styles.descWrapper}>
