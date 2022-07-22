@@ -2,7 +2,7 @@
 
 Web application where users can order food delivery
 
-# Link to the deployed projectм
+# Link to the deployed project
 
 https://delivery-app-eliftech-mk.herokuapp.com/
 
