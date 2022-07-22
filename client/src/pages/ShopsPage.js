@@ -8,7 +8,7 @@ import getShops from "../redux/shops/shopsSelectors";
 import { useSelector } from "react-redux";
 
 export default function ShopsPage() {
-  const { currentShop, isLoading, error } = useSelector(getShops);
+  const { currentShop, isLoading } = useSelector(getShops);
 
   return isLoading ? (
     <div className="loader">
