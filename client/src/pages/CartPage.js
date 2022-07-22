@@ -13,7 +13,6 @@ export default function CartPage() {
   return (
     <div className={styles.cartPageWrapper}>
       <CartForm />
-
       <div className={styles.cartListWrapper}>
         <ul className={styles.cartList}>
           {items.map((el) => (
