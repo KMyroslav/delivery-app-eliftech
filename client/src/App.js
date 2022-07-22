@@ -9,6 +9,8 @@ import { fetchShops } from "./redux/shops/shopsOperations";
 import ShopsPage from "./pages/ShopsPage";
 import Nav from "./components/Nav";
 import CartPage from "./pages/CartPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,15 +20,27 @@ function App() {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
-      <Nav />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<ShopsPage />} />
-          <Route path="/Cart" element={<CartPage />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Nav />
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<ShopsPage />} />
+            <Route path="/Cart" element={<CartPage />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+      <ToastContainer
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 }
 
