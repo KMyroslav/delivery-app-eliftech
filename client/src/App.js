@@ -11,6 +11,7 @@ import Nav from "./components/Nav";
 import CartPage from "./pages/CartPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HandleCartRoute from "handlers/HandleCartRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +27,14 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<ShopsPage />} />
-            <Route path="/Cart" element={<CartPage />} />
+            <Route
+              path="/Cart"
+              element={
+                <HandleCartRoute>
+                  <CartPage />
+                </HandleCartRoute>
+              }
+            />
           </Routes>
         </div>
       </BrowserRouter>
