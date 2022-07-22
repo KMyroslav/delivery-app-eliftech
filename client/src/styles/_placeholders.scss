@@ -1,15 +1,8 @@
-%list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  
-  %wrapper{
+ %wrapper{
     overflow-y: auto;
     height: 80vh;
     border-radius: 10px;
 
-    // outline: 1px solid tomato;
   }
   
   %input{
@@ -21,12 +14,12 @@
   
     transition: border $primary-transition-style;
   
-    color: $secondary-black-text;
+    color: $primary-black-text;
   
     &::placeholder {
       font-size: 16px;
       line-height: 1.25;
-      color: $primary-grey-text;
+      color: $secondary-grey-text;
     }
   
     &:hover, &:focus {
@@ -43,7 +36,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.62;
-  color: $secondary-black-text;
+  color: $primary-black-text;
   background-color: $secondary-grey-bg;
 
   transition: background-color $primary-transition-style,
