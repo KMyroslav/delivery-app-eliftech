@@ -5,7 +5,8 @@ import { Bars } from "react-loader-spinner";
 
 function MapWrapper() {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.GOOGLE_API_KEY || "",
+    googleMapsApiKey:
+      process.env.GOOGLE_API_KEY || "AIzaSyDHmk-TC2i5RLwMrxKA8kw8-UoDB7TNUec",
   });
 
   const renderMap = () => <Map />;
