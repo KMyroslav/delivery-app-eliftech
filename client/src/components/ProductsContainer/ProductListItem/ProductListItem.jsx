@@ -30,6 +30,11 @@ export default function ProductListItem({ product }) {
             value={quantity}
             className={styles.input}
             onChange={(e) => {
+              if (e.target.value <= 0) {
+                e.target.value = quantity;
+                return;
+              }
+              if (e.target.value > 25) e.target.value = 25;
               setQuantity(e.target.value);
             }}
           />
