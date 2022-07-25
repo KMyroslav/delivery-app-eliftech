@@ -11,11 +11,7 @@ import App from "./App";
 import "./index.scss";
 import { Bars } from "react-loader-spinner";
 
-const BASE_URL = window.location.origin.includes("local")
-  ? "http://localhost:8080"
-  : "https://delivery-app-eliftech-mk.herokuapp.com";
-
-axios.defaults.baseURL = BASE_URL;
+axios.defaults.baseURL = process.env.BASE_URL || "http://localhost:8080";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
