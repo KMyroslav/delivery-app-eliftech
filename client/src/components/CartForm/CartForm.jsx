@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import userSlice from "../../redux/user/userSlice";
@@ -12,13 +13,22 @@ import getShops from "redux/shops/shopsSelectors";
 import VerificationError from "./VerificationError";
 
 import styles from "./cartForm.module.scss";
+import MapWrapper from "components/GoogleMap/MapWrapper";
+import { getDirections } from "redux/map/mapSelectors";
 
 export default function CartForm() {
   const dispatch = useDispatch();
 
+  const { directions } = useSelector(getDirections);
   const { isLoading } = useSelector(getOrderStatus);
   const { items, totalPrice } = useSelector(getCart);
   const { currentShop } = useSelector(getShops);
+
+  useEffect(() => {
+    if (!directions) return;
+    const valueInp = document.querySelector("#address");
+    valueInp.value = directions;
+  }, [directions]);
 
   const validationsSchema = yup.object().shape({
     name: yup
@@ -65,74 +75,84 @@ export default function CartForm() {
         }}
         validationSchema={validationsSchema}
       >
-        <Form className={styles.form}>
-          <label className={styles.label}>
-            Name
-            <Field
-              autoComplete="on"
-              name="name"
-              placeholder="Marcus Smith"
-              className={styles.input}
-            />
-            <ErrorMessage
-              name="name"
-              component={VerificationError}
-              className={styles.error}
-            />
-          </label>
-          <label className={styles.label}>
-            Email
-            <Field
-              autoComplete="on"
-              type="email"
-              name="email"
-              placeholder="MarcusSmith@coolmail.com"
-              id="email"
-              className={styles.input}
-            />
-            <ErrorMessage name="email" component={VerificationError} />
-          </label>
-          <label className={styles.label}>
-            Phone
-            <Field
-              autoComplete="on"
-              type="phone"
-              name="phone"
-              placeholder="0907773333"
-              className={styles.input}
-            />
-            <ErrorMessage name="phone" component={VerificationError} />
-          </label>
-          <label className={styles.label}>
-            Address
-            <Field
-              autoComplete="on"
-              type="string"
-              name="address"
-              placeholder="614 Main St, Falmouth, MA"
-              className={styles.input}
-            />
-            <ErrorMessage name="address" component={VerificationError} />
-          </label>
-          <div className={styles.checkOutWrapper}>
-            <p className={styles.totalPrice}>
-              Total price {Number(totalPrice).toFixed(2) || "0.00"}$
-            </p>
-
-            <button className={styles.orderButton} type="submit">
-              {isLoading ? (
-                <Bars
-                  height="30"
-                  width="30"
-                  color="#2196f3"
-                  ariaLabel="loading-indicator"
+        {({ setFieldValue }) => (
+          <Form className={styles.form}>
+            <MapWrapper />
+            <div className={styles.inputWrapper}>
+              <label className={styles.label}>
+                Address
+                <Field
+                  onClick={() => {
+                    if (directions) setFieldValue("address", directions);
+                  }}
+                  autoComplete="on"
+                  type="string"
+                  name="address"
+                  placeholder="614 Main St, Falmouth, MA"
+                  id="address"
+                  className={`${styles.input}`}
                 />
-              ) : (
-                "Submit"
-              )}
-            </button>
-          </div>
-        </Form>
+                <ErrorMessage name="address" component={VerificationError} />
+              </label>
+              <label className={styles.label}>
+                Name
+                <Field
+                  autoComplete="on"
+                  name="name"
+                  placeholder="Marcus Smith"
+                  className={styles.input}
+                />
+                <ErrorMessage
+                  name="name"
+                  component={VerificationError}
+                  className={styles.error}
+                />
+              </label>
+              <label className={styles.label}>
+                Email
+                <Field
+                  autoComplete="on"
+                  type="email"
+                  name="email"
+                  placeholder="MarcusSmith@coolmail.com"
+                  id="email"
+                  className={styles.input}
+                />
+                <ErrorMessage name="email" component={VerificationError} />
+              </label>
+              <label className={styles.label}>
+                Phone
+                <Field
+                  autoComplete="on"
+                  type="phone"
+                  name="phone"
+                  placeholder="0907773333"
+                  className={styles.input}
+                />
+                <ErrorMessage name="phone" component={VerificationError} />
+              </label>
+            </div>
+
+            <div className={styles.checkOutWrapper}>
+              <p className={styles.totalPrice}>
+                Total price {Number(totalPrice).toFixed(2) || "0.00"}$
+              </p>
+
+              <button className={styles.orderButton} type="submit">
+                {isLoading ? (
+                  <Bars
+                    height="30"
+                    width="30"
+                    color="#2196f3"
+                    ariaLabel="loading-indicator"
+                  />
+                ) : (
+                  "Submit"
+                )}
+              </button>
+            </div>
+          </Form>
+        )}
       </Formik>
     </>
   );
