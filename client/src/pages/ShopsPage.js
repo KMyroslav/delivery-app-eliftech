@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 export default function ShopsPage() {
   const { currentShop, isLoading } = useSelector(getShops);
 
-  return isLoading ? (
+  return isLoading && !currentShop ? (
     <div className="loader">
       <Bars
         height="150"

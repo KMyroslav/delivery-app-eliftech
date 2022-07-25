@@ -15,6 +15,7 @@ import shopsSlice from "./shops/shopsSlice";
 import cartSlice from "./cart/cartSlice";
 import userSlice from "./user/userSlice";
 import orderSlice from "./order/orderSlice";
+import mapSlice from "./map/mapSlice";
 
 const persistConfig = {
   key: "cart",
@@ -26,6 +27,7 @@ export const store = configureStore({
     shops: shopsSlice.reducer,
     cart: persistReducer(persistConfig, cartSlice.reducer),
     user: userSlice.reducer,
+    map: mapSlice.reducer,
     order: orderSlice,
   },
   middleware: (getDefaultMiddleware) =>

@@ -42,6 +42,12 @@ export default function CartListItem({ item }) {
           step="1"
           value={quantity}
           onChange={(e) => {
+            if (e.target.value <= 0) {
+              e.target.value = quantity;
+              return;
+            }
+            if (e.target.value > 25) e.target.value = 25;
+
             setQuantity(e.target.value);
             dispatch(
               cartSlice.actions.manageItem({
