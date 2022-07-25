@@ -3,15 +3,29 @@
 .form{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     width: 585px;
     margin-right: 25px;
-    padding: 80px 20px 40px 20px;
+    padding: 20px 20px 40px 20px;
+
+    &:nth-child(2){
+        flex-grow: 2;
+    }
+}
+
+
+.inputWrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .label{
     position: relative;
     &:not(:last-child){
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 }
 
@@ -31,10 +45,11 @@
 }
 
 .checkOutWrapper{
-    margin-top: 60px;
+    // margin-top: 15px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
 .totalPrice{
@@ -46,4 +61,11 @@
     @extend %button;
     padding: 12px 46px;
     font-size: 18px;
+    background-color: $accent;
+    color:$secondary-white-text;
+    &:hover,
+    &:focus{
+        background-color: $button-accent-blue-bg;
+        color:$secondary-white-text;
+    }
 }
