@@ -76,15 +76,17 @@ export default function CartForm() {
         validationSchema={validationsSchema}
       >
         {({ setFieldValue }) => (
-          <Form className={styles.form}>
+          <Form
+            className={styles.form}
+            onClick={() => {
+              if (directions) setFieldValue("address", directions);
+            }}
+          >
             <MapWrapper />
             <div className={styles.inputWrapper}>
               <label className={styles.label}>
                 Address
                 <Field
-                  onClick={() => {
-                    if (directions) setFieldValue("address", directions);
-                  }}
                   autoComplete="on"
                   type="string"
                   name="address"
