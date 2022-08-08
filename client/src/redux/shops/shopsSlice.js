@@ -12,7 +12,7 @@ const shopsSlice = createSlice({
     builder
       .addCase(fetchShops.fulfilled, (state, { payload }) => ({
         ...state,
-        currentShop: payload[0],
+        currentShop: state.currentShop ? state.currentShop : payload[0],
         data: payload,
         isLoading: false,
       }))

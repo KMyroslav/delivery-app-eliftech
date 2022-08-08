@@ -17,15 +17,21 @@ import userSlice from "./user/userSlice";
 import orderSlice from "./order/orderSlice";
 import mapSlice from "./map/mapSlice";
 
-const persistConfig = {
+const cartPersistConfig = {
   key: "cart",
   storage,
 };
 
+const shopsPersistConfig = {
+  key: "shops",
+  storage,
+  whitelist: ["currentShop"],
+};
+
 export const store = configureStore({
   reducer: {
-    shops: shopsSlice.reducer,
-    cart: persistReducer(persistConfig, cartSlice.reducer),
+    shops: persistReducer(shopsPersistConfig, shopsSlice.reducer),
+    cart: persistReducer(cartPersistConfig, cartSlice.reducer),
     user: userSlice.reducer,
     map: mapSlice.reducer,
     order: orderSlice,
